@@ -1,17 +1,24 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { MaterialProvider } from "@/components/MaterialProvider";
 
 export const metadata: Metadata = {
-  title: "Material Web Showcase",
-  description: "Complete Material Web 3 feature showcase — dark expressive aesthetic",
+  title: "Material Web Showcase — M3 Expressive",
+  description: "A comprehensive showcase of all 48 Material Web Components with M3 Expressive theming",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
-    <html lang="en" data-color="blue">
+    <html lang="en">
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap"
           rel="stylesheet"
         />
         <link
@@ -19,17 +26,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           rel="stylesheet"
         />
       </head>
-      <body className="antialiased">
-        <div className="bg-shape bg-shape-1" aria-hidden="true" />
-        <div className="bg-shape bg-shape-2" aria-hidden="true" />
-        <div className="bg-shape bg-shape-3" aria-hidden="true" />
-        <ScrollProgress />
-        {children}
+      <body>
+        <MaterialProvider>{children}</MaterialProvider>
       </body>
     </html>
   );
-}
-
-function ScrollProgress() {
-  return <div className="scroll-progress" id="scroll-progress" />;
 }
