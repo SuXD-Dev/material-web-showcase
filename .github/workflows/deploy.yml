@@ -26,7 +26,7 @@ jobs:
       - run: npm ci
       - uses: actions/configure-pages@v5
         id: pages
-      - name: Build
+      - name: Build (static export)
         env:
           NEXT_PUBLIC_BASE_PATH: ${{ steps.pages.outputs.base_path }}
         run: npm run build
@@ -34,4 +34,14 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
-      - uses: actions/deploy-pages@v4
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
