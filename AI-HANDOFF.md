@@ -107,3 +107,9 @@ Mesma arquitetura do Who-Am-I:
 4. ✅ Fazer commit conventional
 5. ✅ `git push origin main`
 6. ✅ Verificar deploy em `https://suxd-dev.github.io/material-web-showcase/`
+
+## Changelog
+
+| Date | Change |
+|------|--------|
+| 2026-08-30 | Added changelog section to AI-HANDOFF.md |
